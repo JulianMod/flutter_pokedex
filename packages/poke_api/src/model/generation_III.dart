@@ -1,5 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'generation_II/gold.dart';
+import 'generation_III/emerald.dart';
+
 @JsonSerializable()
 class GenerationIii {
   GenerationIii({

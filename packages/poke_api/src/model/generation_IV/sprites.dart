@@ -1,5 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../other.dart';
+import '../versions.dart';
+
 @JsonSerializable()
 class Sprites {
   Sprites({

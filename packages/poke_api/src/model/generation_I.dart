@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'generation_I/red_blue.dart';
+
 @JsonSerializable()
 class GenerationI {
   GenerationI({

@@ -1,5 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'generation_VII/dream_world.dart';
+import 'generation_VII/home.dart';
+
 @JsonSerializable()
 class GenerationVii {
   GenerationVii({

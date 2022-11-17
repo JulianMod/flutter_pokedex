@@ -7,7 +7,7 @@ class DreamWorld {
     this.frontFemale,
   });
 
-  String frontDefault;
+  String? frontDefault;
   dynamic frontFemale;
 
   factory DreamWorld.fromJson(Map<String, dynamic> json) => _$DreamWorldFromJson(json);

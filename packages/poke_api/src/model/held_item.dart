@@ -1,5 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'species.dart';
+import 'version_detail.dart';
+
 @JsonSerializable()
 class HeldItem {
   HeldItem({
@@ -9,5 +12,6 @@ class HeldItem {
 
   Species? item;
   List<VersionDetail>? versionDetails;
+
   factory HeldItem.fromJson(Map<String, dynamic> json) => _$HeldItemFromJson(json);
 }

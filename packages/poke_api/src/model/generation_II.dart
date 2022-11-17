@@ -1,3 +1,9 @@
+import 'package:json_annotation/json_annotation.dart';
+
+import 'generation_II/crystal.dart';
+import 'generation_II/gold.dart';
+
+@JsonSerializable()
 class GenerationIi {
   GenerationIi({
     this.crystal,

@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'species.dart';
+
 @JsonSerializable()
 class GameIndex {
   GameIndex({

@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'generation_IV/sprites.dart';
+
 @JsonSerializable()
 class GenerationIv {
   GenerationIv({
@@ -8,9 +10,9 @@ class GenerationIv {
     this.platinum,
   });
 
-  Sprites diamondPearl;
-  Sprites heartgoldSoulsilver;
-  Sprites platinum;
+  Sprites? diamondPearl;
+  Sprites? heartgoldSoulsilver;
+  Sprites? platinum;
 
   factory GenerationIv.fromJson(Map<String, dynamic> json) => _$GenerationIvFromJson(json);
 

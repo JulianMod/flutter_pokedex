@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+import 'species.dart';
+
+@JsonSerializable()
 class Stat {
   Stat({
     this.baseStat,

@@ -1,5 +1,13 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'ability.dart';
+import 'game_index.dart';
+import 'generation_IV/sprites.dart';
+import 'held_item.dart';
+import 'move.dart';
+import 'species.dart';
+import 'stat.dart';
+
 @JsonSerializable()
 class Pokemon {
   Pokemon({
