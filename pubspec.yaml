@@ -17,6 +17,8 @@ dependencies:
   equatable: ^2.0.3
   flutter_bloc: ^8.1.1
   http: ^0.13.0
+  pokemon_repository:
+    path: packages/pokemon_repository
 
 dev_dependencies:
   flutter_test:

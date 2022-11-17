@@ -7,7 +7,7 @@ import 'held_item.dart';
 import 'move.dart';
 import 'species.dart';
 import 'stat.dart';
-import 'package:poke_api/src/model/pokemon_type.dart';
+import 'package:poke_api/src/models/pokemon_type.dart';
 
 part 'pokemon.g.dart';
 
