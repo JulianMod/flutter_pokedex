@@ -18,14 +18,29 @@ class PokemonCubit extends Cubit<PokemonState> {
 
     try{
       final pokemon = Pokemon.fromRepository(
-        await _pokemonRepository.getPokemon(name)
+          await _pokemonRepository.getPokemon(name)
       );
       emit(state.copyWith(
-        status: PokemonStatus.success,
-        pokemon: pokemon
+          status: PokemonStatus.success,
+          pokemon: pokemon
       ));
     } on Exception {
       emit(state.copyWith(status: PokemonStatus.failure));
+    }
+  }
+
+  Future<void> refreshPokemon() async {
+    if(!state.status.isSuccess) return;
+    if(state.pokemon == Pokemon.empty) return;
+    try {
+      final pokemon = Pokemon.fromRepository(await _pokemonRepository.getPokemon(state.pokemon.name!),);
+
+      state.copyWith(
+          status: PokemonStatus.success,
+          pokemon: pokemon
+      );
+    } on Exception {
+      emit(state);
     }
   }
 }

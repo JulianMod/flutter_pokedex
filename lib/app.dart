@@ -17,7 +17,9 @@ class App extends StatelessWidget {
         value: PokemonRepository,
       child: BlocProvider(
         create: (_) => PokemonCubit(pokemonRepository),
-        child: const SearchPage(),
+        child: const MaterialApp(
+          home: SearchView(),
+        ),
       ),
     );
   }

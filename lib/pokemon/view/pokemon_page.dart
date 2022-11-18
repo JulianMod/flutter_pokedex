@@ -4,7 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../pokemon.dart';
 
 class PokemonPage extends StatefulWidget {
-  const PokemonPage({Key? key}) : super(key: key);
+  const PokemonPage._();
+  
+  static Route<String> route(){
+    return MaterialPageRoute(builder: (_) => const PokemonPage._());
+  }
 
   @override
   State<PokemonPage> createState() => _PokemonPageState();
@@ -13,35 +17,23 @@ class PokemonPage extends StatefulWidget {
 class _PokemonPageState extends State<PokemonPage> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => PokemonCubit(context.read<PokemonRepository>()),
-      child: const PokemonView(),
-    );
-  }
-}
-
-class PokemonView extends StatefulWidget {
-  const PokemonView({Key? key}) : super(key: key);
-
-  @override
-  State<PokemonView> createState() => _PokemonViewState();
-}
-
-class _PokemonViewState extends State<PokemonView> {
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pokemon Page'),
         actions: [
           IconButton(
             icon: const Icon(Icons.favorite),
-            onPressed: () => context.read<PokemonCubit>.addFavourite(state.pokemon),
+            onPressed: () {} /*=> context.read<PokemonCubit>.addFavourite(state.pokemon)*/,
           )
         ],
       ),
       body: Center(
-        child: BlocBuilder<PokemonCubit, PokemonState>(
+        child: BlocConsumer<PokemonCubit, PokemonState>(
+          listener: (context, state) {
+            if(state.status.isSuccess){
+              context.read<PokemonCubit>().refreshPokemon();
+            }
+          },
           builder: (context, state) {
             switch (state.status) {
               case PokemonStatus.initial:
@@ -63,4 +55,3 @@ class _PokemonViewState extends State<PokemonView> {
     );
   }
 }
-

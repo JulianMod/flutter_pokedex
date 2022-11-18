@@ -16,12 +16,14 @@ class PokeApiClient {
   final http.Client _httpClient;
 
   Future<Pokemon> getPokemon({
-    required name
+    required String name
   }) async {
-    final pokemonRequest = Uri.https(_baseUrl, 'pokemon/', name);
-    
+    final pokemonRequest = Uri.https(_baseUrl, 'pokemon/$name');
+
     final pokemonResponse = await _httpClient.get(pokemonRequest);
-    
+
+    print('status code: ${pokemonResponse.statusCode}');
+
     if(pokemonResponse.statusCode != 200) {
       throw PokemonRequestFailure();
     }

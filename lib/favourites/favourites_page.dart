@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class FavouritesPage extends StatelessWidget {
+/*class FavouritesPage extends StatelessWidget {
   const FavouritesPage({Key? key}) : super(key: key);
 
   @override
@@ -14,4 +14,4 @@ class FavouritesPage extends StatelessWidget {
       ),
     );
   }
-}
+}*/

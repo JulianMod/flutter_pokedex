@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pokedex/favourites/favourites_page.dart';
+import 'package:flutter_pokedex/pokemon/cubit/pokemon_cubit.dart';
+import 'package:flutter_pokedex/pokemon/pokemon.dart';
 import 'package:flutter_pokedex/pokemon/view/pokemon_page.dart';
 
 class SearchPage extends StatefulWidget {
-  const SearchPage({super.key});
+  const SearchPage._();
 
-  static Route<String> route() {
-    return MaterialPageRoute(builder: (_) => const SearchPage());
+  static Route<String> route(String text){
+    return MaterialPageRoute(builder: (_) => const SearchPage._());
   }
 
   @override
@@ -14,6 +17,29 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
+  @override
+  Widget build(BuildContext context) {
+    return  BlocProvider(
+      create: (context) => PokemonCubit(context.read<PokemonRepository>()),
+      child: const SearchView(),
+    );
+  }
+}
+
+
+
+class SearchView extends StatefulWidget {
+  const SearchView({super.key});
+
+  static Route<String> route() {
+    return MaterialPageRoute(builder: (_) => const SearchView());
+  }
+
+  @override
+  State<SearchView> createState() => _SearchViewState();
+}
+
+class _SearchViewState extends State<SearchView> {
   final TextEditingController _textController = TextEditingController();
 
   String get _text => _textController.text;
@@ -31,7 +57,7 @@ class _SearchPageState extends State<SearchPage> {
         actions: [
           IconButton(
             icon: const Icon(Icons.favorite),
-            onPressed: () => Navigator.of(context).push(FavouritesPage.route()),
+            onPressed: () {} /*() => Navigator.of(context).push(FavouritesPage.route())*/,
           )
         ],
       ),
@@ -44,7 +70,6 @@ class _SearchPageState extends State<SearchPage> {
                 controller: _textController,
                 decoration: const InputDecoration(
                     labelText: 'Pokemon',
-                    hintText: 'Pikachu'
                 ),
               ),
             ),
@@ -52,7 +77,10 @@ class _SearchPageState extends State<SearchPage> {
           IconButton(
             key: const Key('searchPage_search_iconButton'),
             icon: const Icon(Icons.search, semanticLabel: 'Submit'),
-            onPressed: () => Navigator.of(context).push(PokemonPage.route(_text)),
+            onPressed: () {
+              context.read<PokemonCubit>().fetchPokemon(_text);
+              Navigator.of(context).push(PokemonPage.route());
+            },
           )
         ],
       ),
