@@ -7,14 +7,14 @@ part of 'sprites.dart';
 // **************************************************************************
 
 Sprites _$SpritesFromJson(Map<String, dynamic> json) => Sprites(
-      backDefault: json['backDefault'] as String?,
-      backFemale: json['backFemale'],
-      backShiny: json['backShiny'] as String?,
-      backShinyFemale: json['backShinyFemale'],
-      frontDefault: json['frontDefault'] as String?,
-      frontFemale: json['frontFemale'],
-      frontShiny: json['frontShiny'] as String?,
-      frontShinyFemale: json['frontShinyFemale'],
+      backDefault: json['back_default'] as String?,
+      backFemale: json['back_female'] as String?,
+      backShiny: json['back_shiny'] as String?,
+      backShinyFemale: json['back_shiny_female'] as String?,
+      frontDefault: json['front_default'] as String?,
+      frontFemale: json['front_female'] as String?,
+      frontShiny: json['front_shiny'] as String?,
+      frontShinyFemale: json['front_shiny_female'] as String?,
       other: json['other'] == null
           ? null
           : Other.fromJson(json['other'] as Map<String, dynamic>),
@@ -27,14 +27,14 @@ Sprites _$SpritesFromJson(Map<String, dynamic> json) => Sprites(
     );
 
 Map<String, dynamic> _$SpritesToJson(Sprites instance) => <String, dynamic>{
-      'backDefault': instance.backDefault,
-      'backFemale': instance.backFemale,
-      'backShiny': instance.backShiny,
-      'backShinyFemale': instance.backShinyFemale,
-      'frontDefault': instance.frontDefault,
-      'frontFemale': instance.frontFemale,
-      'frontShiny': instance.frontShiny,
-      'frontShinyFemale': instance.frontShinyFemale,
+      'back_default': instance.backDefault,
+      'back_female': instance.backFemale,
+      'back_shiny': instance.backShiny,
+      'back_shiny_female': instance.backShinyFemale,
+      'front_default': instance.frontDefault,
+      'front_female': instance.frontFemale,
+      'front_shiny': instance.frontShiny,
+      'front_shiny_female': instance.frontShinyFemale,
       'other': instance.other,
       'versions': instance.versions,
       'animated': instance.animated,

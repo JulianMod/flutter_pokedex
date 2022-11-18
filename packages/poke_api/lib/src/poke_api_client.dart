@@ -11,29 +11,29 @@ class PokeApiClient {
   PokeApiClient({http.Client? httpClient})
       : _httpClient = httpClient ?? http.Client();
 
-  static const _baseUrl = 'https://pokeapi.co/api/v2/';
+  static const _baseUrl = 'pokeapi.co';
 
   final http.Client _httpClient;
 
   Future<Pokemon> getPokemon({
     required String name
   }) async {
-    final pokemonRequest = Uri.https(_baseUrl, 'pokemon/$name');
+
+    final pokemonRequest = Uri.https(_baseUrl, '/api/v2/pokemon/$name');
 
     final pokemonResponse = await _httpClient.get(pokemonRequest);
-
-    print('status code: ${pokemonResponse.statusCode}');
 
     if(pokemonResponse.statusCode != 200) {
       throw PokemonRequestFailure();
     }
-    
+
     final bodyJson = jsonDecode(pokemonResponse.body) as Map<String, dynamic>;
-    
-    if(!bodyJson.containsKey('Not found')) {
+
+    if(bodyJson.containsKey('Not found')) {
       throw PokemonNotFoundFailure();
     }
 
+    final pk = Pokemon.fromJson(bodyJson);
     return Pokemon.fromJson(bodyJson);
   }
 }

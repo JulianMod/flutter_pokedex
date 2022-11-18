@@ -11,7 +11,7 @@ import 'package:poke_api/src/models/pokemon_type.dart';
 
 part 'pokemon.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class Pokemon {
   Pokemon({
     this.abilities,

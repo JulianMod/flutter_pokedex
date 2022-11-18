@@ -10,26 +10,26 @@ Pokemon _$PokemonFromJson(Map<String, dynamic> json) => Pokemon(
       abilities: (json['abilities'] as List<dynamic>?)
           ?.map((e) => Ability.fromJson(e as Map<String, dynamic>))
           .toList(),
-      baseExperience: json['baseExperience'] as int?,
+      baseExperience: json['base_experience'] as int?,
       forms: (json['forms'] as List<dynamic>?)
           ?.map((e) => Species.fromJson(e as Map<String, dynamic>))
           .toList(),
-      gameIndices: (json['gameIndices'] as List<dynamic>?)
+      gameIndices: (json['game_indices'] as List<dynamic>?)
           ?.map((e) => GameIndex.fromJson(e as Map<String, dynamic>))
           .toList(),
       height: json['height'] as int?,
-      heldItems: (json['heldItems'] as List<dynamic>?)
+      heldItems: (json['held_items'] as List<dynamic>?)
           ?.map((e) => HeldItem.fromJson(e as Map<String, dynamic>))
           .toList(),
       id: json['id'] as int?,
-      isDefault: json['isDefault'] as bool?,
-      locationAreaEncounters: json['locationAreaEncounters'] as String?,
+      isDefault: json['is_default'] as bool?,
+      locationAreaEncounters: json['location_area_encounters'] as String?,
       moves: (json['moves'] as List<dynamic>?)
           ?.map((e) => Move.fromJson(e as Map<String, dynamic>))
           .toList(),
       name: json['name'] as String?,
       order: json['order'] as int?,
-      pastTypes: json['pastTypes'] as List<dynamic>?,
+      pastTypes: json['past_types'] as List<dynamic>?,
       species: json['species'] == null
           ? null
           : Species.fromJson(json['species'] as Map<String, dynamic>),
@@ -47,18 +47,18 @@ Pokemon _$PokemonFromJson(Map<String, dynamic> json) => Pokemon(
 
 Map<String, dynamic> _$PokemonToJson(Pokemon instance) => <String, dynamic>{
       'abilities': instance.abilities,
-      'baseExperience': instance.baseExperience,
+      'base_experience': instance.baseExperience,
       'forms': instance.forms,
-      'gameIndices': instance.gameIndices,
+      'game_indices': instance.gameIndices,
       'height': instance.height,
-      'heldItems': instance.heldItems,
+      'held_items': instance.heldItems,
       'id': instance.id,
-      'isDefault': instance.isDefault,
-      'locationAreaEncounters': instance.locationAreaEncounters,
+      'is_default': instance.isDefault,
+      'location_area_encounters': instance.locationAreaEncounters,
       'moves': instance.moves,
       'name': instance.name,
       'order': instance.order,
-      'pastTypes': instance.pastTypes,
+      'past_types': instance.pastTypes,
       'species': instance.species,
       'sprites': instance.sprites,
       'stats': instance.stats,

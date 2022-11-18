@@ -5,7 +5,7 @@ import '../versions.dart';
 
 part 'sprites.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class Sprites {
   Sprites({
     this.backDefault,
@@ -22,13 +22,13 @@ class Sprites {
   });
 
   String? backDefault;
-  dynamic? backFemale;
+  String? backFemale;
   String? backShiny;
-  dynamic? backShinyFemale;
+  String? backShinyFemale;
   String? frontDefault;
-  dynamic? frontFemale;
+  String? frontFemale;
   String? frontShiny;
-  dynamic? frontShinyFemale;
+  String? frontShinyFemale;
   Other? other;
   Versions? versions;
   Sprites? animated;
