@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-/*class FavouritesList extends StatefulWidget {
+class FavouritesList extends StatefulWidget {
   const FavouritesList({Key? key}) : super(key: key);
 
   @override
@@ -30,4 +30,4 @@ class _FavouritesListState extends State<FavouritesList> {
       }
     });
   }
-}*/
+}

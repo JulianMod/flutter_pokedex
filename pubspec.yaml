@@ -19,6 +19,8 @@ dependencies:
   http: ^0.13.0
   pokemon_repository:
     path: packages/pokemon_repository
+  favourite_pokemon_repository:
+    path: packages/favourite_pokemon_repository
 
 dev_dependencies:
   flutter_test:
@@ -30,5 +32,5 @@ dev_dependencies:
 
 flutter:
 
- uses-material-design: true
+  uses-material-design: true
 

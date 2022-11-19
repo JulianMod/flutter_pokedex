@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_pokedex/favourites/favourites_page.dart';
+import 'package:flutter_pokedex/favourites/view/favourites_page.dart';
 import 'package:flutter_pokedex/pokemon/cubit/pokemon_cubit.dart';
 import 'package:flutter_pokedex/pokemon/pokemon.dart';
 import 'package:flutter_pokedex/pokemon/view/pokemon_page.dart';
@@ -57,7 +57,7 @@ class _SearchViewState extends State<SearchView> {
         actions: [
           IconButton(
             icon: const Icon(Icons.favorite),
-            onPressed: () {} /*() => Navigator.of(context).push(FavouritesPage.route())*/,
+            onPressed: () => Navigator.of(context).push(FavouritesPage.route()),
           )
         ],
       ),

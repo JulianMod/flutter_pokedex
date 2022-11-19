@@ -1,18 +1,16 @@
 import 'package:equatable/equatable.dart';
 
-class Pokemon extends Equatable{
-  const Pokemon({
+class FavouritePokemon extends Equatable{
+  const FavouritePokemon({
     required this.id,
     required this.name,
     required this.image,
-    this.isFavourite = false
   });
 
   final int? id;
   final String? name;
   final String? image;
-  final bool isFavourite;
 
   @override
-  List<Object?> get props => [id, name, image, isFavourite];
+  List<Object?> get props => [id, name, image];
 }

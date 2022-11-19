@@ -5,7 +5,7 @@ import '../pokemon.dart';
 
 class PokemonPage extends StatefulWidget {
   const PokemonPage._();
-  
+
   static Route<String> route(){
     return MaterialPageRoute(builder: (_) => const PokemonPage._());
   }
@@ -23,7 +23,7 @@ class _PokemonPageState extends State<PokemonPage> {
         actions: [
           IconButton(
             icon: const Icon(Icons.favorite),
-            onPressed: () {} /*=> context.read<PokemonCubit>.addFavourite(state.pokemon)*/,
+            onPressed: () => context.read<PokemonCubit>().addFavourite(),
           )
         ],
       ),

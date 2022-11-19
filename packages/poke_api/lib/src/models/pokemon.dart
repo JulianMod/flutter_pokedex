@@ -32,7 +32,6 @@ class Pokemon {
     this.stats,
     this.types,
     this.weight,
-    this.isFavourite = false
   });
 
   List<Ability>? abilities;
@@ -53,8 +52,6 @@ class Pokemon {
   List<Stat>? stats;
   List<PokemonType>? types;
   int? weight;
-  @JsonKey(ignore: true)
-  bool isFavourite;
 
   factory Pokemon.fromJson(Map<String, dynamic> json) => _$PokemonFromJson(json);
 }
