@@ -17,30 +17,29 @@ class FavouritePokemonCubit extends Cubit<FavouritePokemonState> {
 
     try{
 
-      final _futurePokemon = await _favouritePokemonRepository.getFavouritePokemon(name);
+      final favouritePokemon = await _favouritePokemonRepository.getFavouritePokemon(name);
 
-      final favouritePokemon = FavouritePokemon.fromRepository(_futurePokemon!);
       emit(state.copyWith(
           status: FavouritePokemonStatus.success,
-          favouritePokemon: favouritePokemon
+          favouritePokemon: FavouritePokemon.fromRepository(favouritePokemon!)
       ));
     } on Exception {
       emit(state.copyWith(status: FavouritePokemonStatus.failure));
     }
   }
 
-/*  Future<void> refreshPokemon() async {
+  Future<void> refreshFavouritePokemon() async {
     if(!state.status.isSuccess) return;
-    if(state.pokemon == Pokemon.empty) return;
+    if(state.favouritePokemon == FavouritePokemon.empty) return;
     try {
-      final pokemon = Pokemon.fromRepository(await _pokemonRepository.getPokemon(state.pokemon.name!),);
+      final favouritePokemon = await _favouritePokemonRepository.getFavouritePokemon(state.favouritePokemon.name!);
 
       state.copyWith(
-          status: PokemonStatus.success,
-          pokemon: pokemon
+          status: FavouritePokemonStatus.success,
+          favouritePokemon: FavouritePokemon.fromRepository(favouritePokemon!)
       );
     } on Exception {
       emit(state);
     }
-  }*/
+  }
 }

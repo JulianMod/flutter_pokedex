@@ -8,7 +8,7 @@ class FavouritesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Favourites'),),
-      body: BlocProvider(
+      body: BlocConsumer(
         create: (_) => FavouriteBloc(httpClient: http.Client())..add(FavouriteFetched()),
         child: const FavouritesList()
       ),
