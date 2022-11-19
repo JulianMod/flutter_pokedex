@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FavouritesList extends StatefulWidget {
-  const FavouritesList({Key? key}) : super(key: key);
+  const FavouritesList({Key? key,
+  required this.name,
+  required this.image
+  }) : super(key: key);
+
+  final String name;
+  final String image;
 
   @override
   State<FavouritesList> createState() => _FavouritesListState();
@@ -11,23 +16,21 @@ class FavouritesList extends StatefulWidget {
 class _FavouritesListState extends State<FavouritesList> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FavouriteBloc, FavouriteState>(
-        builder: (context, state) {
-      switch (state.status) {
-        case FavouriteStatus.failure:
-          return const Center(child: Text('failed to fetch favourites'));
-        case FavouriteStatus.success:
-          if (state.favourites.isEmpty) {
-            return const Center(
-              child: Text('no favourites'),
-            );
-          }
-          return ListView.builder(
-            itemBuilder: (BuildContext context, int index) {
-              return FavouritesListItem(pokemon: state.favourites[index]);
-            },
-          );
-      }
-    });
+    return ReorderableListView(
+        children: [
+          ListTile(
+            leading: Image.network(widget.image),
+            title: Text(widget.name),
+          )
+        ],
+        onReorder: (int oldIndex, int newIndex) {
+          setState(() {
+            if(oldIndex < newIndex){
+              newIndex -= 1;
+            }
+            final int item = _items.removeAt(oldIndex);
+            _items.insert(newIndex, item)
+          });
+        });
   }
 }

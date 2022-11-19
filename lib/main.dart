@@ -1,3 +1,4 @@
+import 'package:favourite_pokemon_repository/favourite_pokemon_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pokedex/pokemon_bloc_observer.dart';
@@ -9,5 +10,6 @@ void main() {
   Bloc.observer = PokemonBlocObserver();
   runApp(App(
     pokemonRepository: PokemonRepository(),
+    favouritePokemonRepository: FavouritePokemonRepository(),
   ));
 }

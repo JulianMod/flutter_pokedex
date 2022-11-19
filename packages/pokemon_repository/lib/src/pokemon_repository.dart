@@ -8,12 +8,13 @@ class PokemonRepository{
   final PokeApiClient _pokeApiClient;
 
   Future<Pokemon> getPokemon(String name) async {
-    final pokemon = await _pokeApiClient.getPokemon(name: name);
+    final pokemonAPI = await _pokeApiClient.getPokemon(name: name);
 
-    return Pokemon(
-        id: pokemon.id,
-        name: pokemon.name,
-        image: pokemon.sprites?.frontDefault
+    final pokemon = Pokemon(
+        id: pokemonAPI.id,
+        name: pokemonAPI.name,
+        image: pokemonAPI.sprites?.frontDefault
     );
+    return pokemon;
   }
 }

@@ -10,18 +10,18 @@ class FavouritePokemonCubit extends Cubit<FavouritePokemonState> {
 
   final FavouritePokemonRepository _favouritePokemonRepository;
 
-  Future<void> fetchFavouritePokemon(String? name) async {
-    if (name == null || name.isEmpty) return;
-
-    emit(state.copyWith(status:FavouritePokemonStatus.loading));
-
+  Future<void> fetchFavouritePokemon() async {
     try{
 
-      final favouritePokemon = await _favouritePokemonRepository.getFavouritePokemon(name);
+      final favouritePokemon = await _favouritePokemonRepository.getFavouritePokemon();
+
+      if (favouritePokemon == null || favouritePokemon.isEmpty) return;
+
+      emit(state.copyWith(status:FavouritePokemonStatus.loading));
 
       emit(state.copyWith(
           status: FavouritePokemonStatus.success,
-          favouritePokemon: FavouritePokemon.fromRepository(favouritePokemon!)
+          favouritePokemon: FavouritePokemon.fromRepository(favouritePokemon)
       ));
     } on Exception {
       emit(state.copyWith(status: FavouritePokemonStatus.failure));
@@ -32,7 +32,7 @@ class FavouritePokemonCubit extends Cubit<FavouritePokemonState> {
     if(!state.status.isSuccess) return;
     if(state.favouritePokemon == FavouritePokemon.empty) return;
     try {
-      final favouritePokemon = await _favouritePokemonRepository.getFavouritePokemon(state.favouritePokemon.name!);
+      final favouritePokemon = await _favouritePokemonRepository.getFavouritePokemon();
 
       state.copyWith(
           status: FavouritePokemonStatus.success,

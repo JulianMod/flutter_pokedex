@@ -8,8 +8,8 @@ class FavouritePokemonRepository{
 
   final PokemonRepository _pokemonRepository;
 
-  Future<FavouritePokemon?> getFavouritePokemon(String name) async {
-    final pokemon = await _pokemonRepository.getPokemon(name);
+  Future<FavouritePokemon?> getFavouritePokemon() async {
+    final pokemon = await _pokemonRepository.getPokemon();
 
     if(pokemon.isFavourite){
       return FavouritePokemon(

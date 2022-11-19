@@ -29,7 +29,6 @@ class PokemonCubit extends Cubit<PokemonState> {
     }
   }
 
-  //TODO is refresh needed in PokemonPage
   Future<void> refreshPokemon() async {
     if(!state.status.isSuccess) return;
     if(state.pokemon == Pokemon.empty) return;
@@ -52,16 +51,16 @@ class PokemonCubit extends Cubit<PokemonState> {
       final pokemon = Pokemon.fromRepository(await _pokemonRepository.getPokemon(state.pokemon.name!),);
 
       final favouritePokemon = pokemon.copyWith(
-        id: pokemon.id,
-        name: pokemon.name,
-        image: pokemon.image,
-        isFavourite: true
+          id: pokemon.id,
+          name: pokemon.name,
+          image: pokemon.image,
+          isFavourite: true
       );
 
-      state.copyWith(
+      emit(state.copyWith(
           status: PokemonStatus.success,
           pokemon: favouritePokemon
-      );
+      ));
     } on Exception {
       emit(state);
     }
