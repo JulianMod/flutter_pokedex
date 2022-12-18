@@ -7,6 +7,8 @@ class PokemonRepository{
 
   final PokeApiClient _pokeApiClient;
 
+  List favouritePokemons = [];
+
   Future<Pokemon> getPokemon(String name) async {
     final pokemonAPI = await _pokeApiClient.getPokemon(name: name);
 
@@ -17,4 +19,8 @@ class PokemonRepository{
     );
     return pokemon;
   }
+
+  void addToFavourite(dynamic pokemon) => favouritePokemons.add(pokemon);
+
+  List getFavourite() => favouritePokemons;
 }
