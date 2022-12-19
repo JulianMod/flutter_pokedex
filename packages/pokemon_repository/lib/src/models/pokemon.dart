@@ -15,4 +15,21 @@ class Pokemon extends Equatable{
 
   @override
   List<Object?> get props => [id, name, image, isFavourite];
+
+  Map<String, Object?> toMap() {
+    var map = <String, Object?>{
+      '_id': id,
+      'name': name,
+      'image': image
+    };
+    return map;
+  }
+
+  static Pokemon fromMap(Map<String, Object?> map) {
+    return Pokemon(
+        id: map['_id'] as int,
+        name: map['name'] as String,
+        image:  map['image'] as String
+    );
+  }
 }

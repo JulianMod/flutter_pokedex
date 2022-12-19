@@ -19,8 +19,7 @@ dependencies:
   http: ^0.13.0
   pokemon_repository:
     path: packages/pokemon_repository
-  favourite_pokemon_repository:
-    path: packages/favourite_pokemon_repository
+  sqflite: ^2.2.2
 
 dev_dependencies:
   flutter_test:

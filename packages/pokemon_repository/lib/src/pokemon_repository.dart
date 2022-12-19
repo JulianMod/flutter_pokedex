@@ -1,13 +1,12 @@
 import 'package:poke_api/poke_api.dart' hide Pokemon;
 import 'package:pokemon_repository/pokemon_repository.dart';
+import 'package:favourite_pokemon_table/favourite_pokemon_table.dart';
 
 class PokemonRepository{
   PokemonRepository({PokeApiClient? pokeApiClient})
       : _pokeApiClient = pokeApiClient ?? PokeApiClient();
 
   final PokeApiClient _pokeApiClient;
-
-  List favouritePokemons = [];
 
   Future<Pokemon> getPokemon(String name) async {
     final pokemonAPI = await _pokeApiClient.getPokemon(name: name);
@@ -20,7 +19,18 @@ class PokemonRepository{
     return pokemon;
   }
 
-  void addToFavourite(dynamic pokemon) => favouritePokemons.add(pokemon);
+  Future<void> addToFavourite(Pokemon pokemon) async {
+    DatabaseHelper databaseHelper = DatabaseHelper();
+    databaseHelper.open();
+    databaseHelper.insert(pokemon);
+    databaseHelper.close();
+  }
 
-  List getFavourite() => favouritePokemons;
+  Future<List<Pokemon>> getFavourites() async {
+    DatabaseHelper databaseHelper = DatabaseHelper();
+    databaseHelper.open();
+    List<Pokemon> favourites = await databaseHelper.getFavourites();
+    databaseHelper.close();
+    return favourites;
+  }
 }

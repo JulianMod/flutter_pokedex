@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_pokedex/favourites/favourites.dart';
+import 'package:flutter_pokedex/pokemon/models/pokemon.dart';
 
 class FavouritesList extends StatefulWidget {
   const FavouritesList({Key? key,}) : super(key: key);
@@ -10,13 +10,13 @@ class FavouritesList extends StatefulWidget {
 
 class _FavouritesListState extends State<FavouritesList> {
 
-  final List<FavouritePokemon> favouritePokemonList = [];
+  final List<Pokemon> favouritePokemonList = [];
 
   @override
   Widget build(BuildContext context) {
     return ReorderableListView(
         children: [
-          for( int index = 0; index < favouritePokemonList.length; index++)
+          for(int index = 0; index < favouritePokemonList.length; index++)
           ListTile(
             leading: Image.network(favouritePokemonList[index].image!),
             title: Text(favouritePokemonList[index].name!),
@@ -27,7 +27,7 @@ class _FavouritesListState extends State<FavouritesList> {
             if(oldIndex < newIndex){
               newIndex -= 1;
             }
-            final FavouritePokemon item = favouritePokemonList.removeAt(oldIndex);
+            final Pokemon item = favouritePokemonList.removeAt(oldIndex);
             favouritePokemonList.insert(newIndex, item);
           });
         });

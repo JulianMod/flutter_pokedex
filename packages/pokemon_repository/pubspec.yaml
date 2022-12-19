@@ -10,6 +10,8 @@ dependencies:
   equatable: ^2.0.3
   poke_api:
     path: ../poke_api
+  favourite_pokemon_table:
+    path: ../favourite_pokemon_table
 
 dev_dependencies:
   very_good_analysis: ^3.0.2

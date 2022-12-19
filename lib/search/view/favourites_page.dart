@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_pokedex/favourites/widgets/favourites_list.dart';
+import 'package:flutter_pokedex/pokemon/widgets/favourites_list.dart';
 
 class FavouritesPage extends StatelessWidget {
   const FavouritesPage._();
