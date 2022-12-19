@@ -18,7 +18,7 @@ class Pokemon extends Equatable{
 
   Map<String, Object?> toMap() {
     var map = <String, Object?>{
-      '_id': id,
+      'id': id,
       'name': name,
       'image': image
     };
@@ -27,7 +27,7 @@ class Pokemon extends Equatable{
 
   static Pokemon fromMap(Map<String, Object?> map) {
     return Pokemon(
-        id: map['_id'] as int,
+        id: map['id'] as int,
         name: map['name'] as String,
         image:  map['image'] as String
     );

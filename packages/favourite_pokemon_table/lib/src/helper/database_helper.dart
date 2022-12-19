@@ -2,7 +2,7 @@ import 'package:pokemon_repository/pokemon_repository.dart';
 import 'package:sqflite/sqflite.dart';
 
 final String tablePokemon = 'favourite';
-final String columnId = '_id';
+final String columnId = 'id';
 final String columnName = 'name';
 final String columnImage = 'image';
 
@@ -10,8 +10,7 @@ class DatabaseHelper{
   late Database db;
 
   Future open() async {
-    var databasesPath = await getDatabasesPath();
-    String path = '$databasesPath$tablePokemon.db';
+    String path = '$tablePokemon.db';
 
     db = await openDatabase(path, version: 1,
     onCreate: (Database db, int version) async {
@@ -20,6 +19,7 @@ class DatabaseHelper{
       $columnId integer primary key,
       $columnName text not null,
       $columnImage text not null
+      )
       ''');
     });
   }
@@ -29,6 +29,7 @@ class DatabaseHelper{
   }
 
   Future<List<Pokemon>> getFavourites() async {
+    await open();
     List<Map<String, Object?>> maps = await db.query(tablePokemon);
 
     List<Pokemon> favourites = List<Pokemon>.generate(maps.length, (index) => Pokemon.fromMap(maps[index]));

@@ -21,16 +21,16 @@ class PokemonRepository{
 
   Future<void> addToFavourite(Pokemon pokemon) async {
     DatabaseHelper databaseHelper = DatabaseHelper();
-    databaseHelper.open();
-    databaseHelper.insert(pokemon);
-    databaseHelper.close();
+    await databaseHelper.open();
+    await databaseHelper.insert(pokemon);
+    await databaseHelper.close();
   }
 
   Future<List<Pokemon>> getFavourites() async {
     DatabaseHelper databaseHelper = DatabaseHelper();
-    databaseHelper.open();
+    await databaseHelper.open();
     List<Pokemon> favourites = await databaseHelper.getFavourites();
-    databaseHelper.close();
+    await databaseHelper.close();
     return favourites;
   }
 }

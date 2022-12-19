@@ -57,7 +57,7 @@ class PokemonCubit extends Cubit<PokemonState> {
           isFavourite: true
       );
 
-      _pokemonRepository.addToFavourite(favouritePokemon);
+      _pokemonRepository.addToFavourite(await _pokemonRepository.getPokemon(state.pokemon.name!));
 
       emit(state.copyWith(
           status: PokemonStatus.success,
